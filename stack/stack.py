@@ -1,4 +1,11 @@
 """
+Last In, First Out (LIFO):
+- knapsack analogy
+- Methods / Behaviors / Operations:
+    push(item) - add and item to the top of the stack
+    pop() - remove the top item (typically returns removed item)
+    peek() - returns the top item's value (does not remove it)
+
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order. 
 
@@ -10,18 +17,23 @@ return elements in Last In First Out order.
 3.  What is the difference between using an array vs. a linked list when 
     implementing a Stack?
 """
-import 
+from '/singly_linked_list/singly_linked_list.py' import LinkedList 
 
 class Stack:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = LinkedList()
 
     def __len__(self):
-        pass
+        return self.size
 
     def push(self, value):
-        pass
+        self.size += 1
+        self.storage.add_to_head(value)
 
     def pop(self):
-        pass
+        if self.size > 0:
+            self.size -= 1
+            return self.storage.remove_head()
+        else:
+            return None
