@@ -65,6 +65,16 @@ class LinkedList:
             # set the list's tail reference to the new node
             self.tail = new_node
 
+    def add_to_head(self, value):
+        new_node = Node(value)
+
+        if self.head is None and self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next_node = self.head
+            self.head = new_node
+
     def remove_head(self):
         # return None if there is no head (i.e. the list is empty)
         if not self.head:
@@ -146,3 +156,18 @@ class LinkedList:
             # update the current node to the next node in the list
             current = current.get_next()
         return max_value
+
+'''
+Last In, First Out (LIFO):
+- knapsack analogy
+- Methods / Behaviors / Operations:
+    push(item) - add and item to the top of the stack
+    pop() - remove the top item (typically returns removed item)
+    peek() - returns the top item's value (does not remove it)
+
+First In, First Out (FIFO):
+- queue
+- Methods / Behaviors / Operations:
+    enqueue(item) - add item to the end of the line
+    dequeue() - remove item at the begining of the line (typically returns removed item)
+'''
