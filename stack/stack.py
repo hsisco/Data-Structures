@@ -34,7 +34,7 @@ from singly_linked_list import LinkedList
 #     def pop(self):
 #         if len(self.storage) < 1:
 #             return None
-#         return self.storage.pop(0
+#         return self.storage.pop(0)
 class Stack:
     def __init__(self):
         self.size = 0
