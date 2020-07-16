@@ -58,16 +58,39 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        while self.right is not None:
-            self = self.right
-        return self.value
+        # DFT!!
+        # while self.right != None:
+        #     self = self.right
+        #     return self.value
+        if not self:
+            return None
+        # Recursion Version:
+        # if self.right is None:
+        #     return self. value
+        # return self.right.get_max()
+
+        max_value = self.value
+        current = self
+        while current:
+            if current.value > max_value:
+                max_value = current.value
+            current = current.right
+        return max_value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
+        # DFT!!
+        # fn(self.value)
+        # if self.left != None:
+        #     self.left.for_each(fn)
+        # if self.right != None:
+        #     self.right.for_each(fn)
         fn(self.value)
-        if self.left is not None:
+
+        # Initialize max_value variable
+        if self.left:
             self.left.for_each(fn)
-        if self.right is not None:
+        if self.right:
             self.right.for_each(fn)
 
     # Part 2 -----------------------
@@ -75,17 +98,75 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # STACK!! --> or use Recursion
+        # # pre_order_dft:
+        # # recurse Left
+        # self.left.fn()
+        # # visit logic
+        # print(self.value)
+        # # recurse Right
+        # self.right.fn()
+            # # post_order_dft
+            # # recurse Left
+            # self.left.fn()
+            # # recurse Right
+            # self.right.fn()
+            # # visit logic
+            # print(self.value)
+        # if the current Node == None:
+        #     we know we've reached the end of a recursion/base case
+        #     return
+        # (base case) we want to return
+        if self is None:
+            return
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.in_order_print()
+        # visit the node by printing its value
+        print(self.value)
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
         pass
+        # QUEUE!!
+        # Not Recursion! Its Iterative! = while loop
+        # You should import the queue class from earlier in the
+        # week and use that class to implement this method
+        # use a queue to form a line for the nodes to line up in
+        
+        # start by placing the root in the queue
+        
+        # need a while loop to iterate
+        # while length of queue is greater than 0
+        #     dequeue item from front of queue
+        #     print it
+
+        #     place current item's left node in queue if not None
+        #     place current item's right node in queue if not None
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
         pass
+        # Initialize an empty STACK
+        # push the root node onto the STACK
+
+        # need a while loop to manage iteration
+        # if stack is not empty, enter the while loop
+        #     pop top item off the STACK
+        #     print that item's value
+
+        #     if there is a left subtree
+        #         push left item onto the STACK
+
+        #     if there is a right subtree
+        #         push right item onto the stack
+
+# Know how to reverse a singly linked list - numpy intersect1d
 
     # Stretch Goals -------------------------
     # Note: Research may be required
